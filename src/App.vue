@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
 		<el-container>
-			<el-header>工具站点</el-header>
 			<el-main>
 				<code-preview />
 			</el-main>
@@ -20,6 +19,16 @@
 		-moz-osx-font-smoothing: grayscale;
 		text-align: center;
 		color: #2c3e50;
-		margin-top: 60px;
+		margin: 0;
+		padding: 0;
+		
+		.el-container {
+			height: 100%;
+			
+			.el-main {
+				height: 100%;
+				padding: 0;
+			}
+		}
 	}
 </style>

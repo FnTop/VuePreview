@@ -1,0 +1,4 @@
+/* 覆盖 @vue/repl 默认的浮动编辑器样式 */
+.editor-floating {
+  display: none !important;
+}
