@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist",
-    "push:all": "git push -u origin master && git push -u gitee master",
+    "push:all": "git push -u gitee master && git push -u origin master",
     "push:github": "git push -u origin master",
     "push:gitee": "git push -u gitee master"
   },

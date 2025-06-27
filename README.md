@@ -1,5 +1,7 @@
 # VuePreview 项目说明
 
+[项目地址](https://fntop.github.io/VuePreview/) 
+
 ## 项目简介
 
 VuePreview 是一个基于 Vue3 + Vite 的在线代码预览与演示平台，支持多种前端代码片段的实时渲染和预览。主要功能包括：
