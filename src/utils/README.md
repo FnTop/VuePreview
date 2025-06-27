@@ -3,6 +3,7 @@
 这是一个基于 `js-beautify` 的代码格式化工具，支持多种编程语言的代码格式化。
 
 ## 功能特性
+
 - ✅ 支持多种编程语言：Vue、JavaScript、TypeScript、HTML、CSS、Less、SCSS
 - ✅ 统一的格式化配置
 - ✅ 自定义格式化选项
