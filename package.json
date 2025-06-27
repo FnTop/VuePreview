@@ -1,6 +1,7 @@
 {
   "name": "vue3-element-plus-tool-site",
   "version": "0.0.0",
+  "homepage": "https://FnTop.github.io/VuePreview/",
   "private": true,
   "scripts": {
     "dev": "vite",

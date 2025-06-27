@@ -2,29 +2,59 @@
 
 ## 项目简介
 
-（此处可补充项目的基本介绍、功能亮点、技术栈等信息）
+VuePreview 是一个基于 Vue3 + Vite 的在线代码预览与演示平台，支持多种前端代码片段的实时渲染和预览。主要功能包括：
+
+- 支持 Vue 单文件组件（.vue）、HTML、JavaScript、CSS 等多种代码格式的在线编辑与预览
+- 实时渲染和热更新，所见即所得
+- 代码高亮与格式化，提升代码可读性
+- 支持多远程仓库同步，便于团队协作与备份
+- 可扩展的插件机制，方便集成更多功能
+- 简洁美观的 UI 设计，良好的用户体验
 
 ---
 
-# 多远程仓库配置
+# GitHub Pages 发布与自动化
 
-## 配置说明
+## 新增 npm 工具
 
-您的项目现在已配置为同时支持 GitHub 和 Gitee 两个远程仓库：
+本项目集成了 GitHub Pages 自动化部署工具，使用 `gh-pages` npm 包实现一键发布静态站点到 GitHub Pages。
 
-- **GitHub**: `origin` - https://github.com/FnTop/VuePreview.git
-- **Gitee**: `gitee` - https://gitee.com/FnTop/vue-preview.git
+### 安装依赖
 
-## 使用方法
-
-### 1. 查看远程仓库
 ```bash
-git remote -v
+npm install gh-pages --save-dev
 ```
 
-### 2. 推送代码
+### package.json 脚本配置示例
 
-#### 方法一：使用 npm 脚本（推荐）
+```json
+"scripts": {
+  "build": "vite build",
+  "deploy": "npm run build && gh-pages -d dist"
+}
+```
+
+- `build`：构建生产环境静态文件
+- `deploy`：构建并自动发布到 gh-pages 分支
+
+### 发布流程
+
+1. 确保已配置好 `homepage` 字段（如有需要）到你的 `package.json`，例如：
+   ```json
+   "homepage": "https://你的github用户名.github.io/你的仓库名/"
+   ```
+2. 执行以下命令：
+   ```bash
+   npm run deploy
+   ```
+3. 首次发布后，进入 GitHub 仓库的 Settings > Pages，选择 gh-pages 分支作为发布源。
+4. 稍等片刻，即可通过 `https://你的github用户名.github.io/你的仓库名/` 访问你的在线预览站点。
+
+---
+
+
+### 推送代码
+
 ```bash
 # 同时推送到两个平台
 npm run push:all
@@ -35,81 +65,3 @@ npm run push:github
 # 只推送到 Gitee
 npm run push:gitee
 ```
-
-#### 方法二：使用脚本文件
-```bash
-# Linux/Mac
-./push-all.sh
-
-# Windows
-push-all.bat
-```
-
-#### 方法三：手动推送
-```bash
-# 推送到 GitHub
-git push origin master
-
-# 推送到 Gitee
-git push gitee master
-```
-
-### 3. 拉取代码
-```bash
-# 从 GitHub 拉取
-git pull origin master
-
-# 从 Gitee 拉取
-git pull gitee master
-```
-
-### 4. 添加远程仓库（如果需要重新配置）
-```bash
-# 添加 GitHub 远程仓库
-git remote add origin https://github.com/FnTop/VuePreview.git
-
-# 添加 Gitee 远程仓库
-git remote add gitee https://gitee.com/FnTop/vue-preview.git
-```
-
-## 注意事项
-
-1. **分支同步**: 确保两个远程仓库的分支保持同步
-2. **权限设置**: 确保您有两个仓库的推送权限
-3. **网络问题**: 如果某个平台网络访问较慢，可以分别推送
-4. **冲突处理**: 如果两个仓库有不同步的提交，需要先解决冲突
-
-## 常见问题
-
-### Q: 推送失败怎么办？
-A: 检查网络连接和仓库权限，可以尝试分别推送：
-```bash
-git push origin master
-git push gitee master
-```
-
-### Q: 如何切换默认远程仓库？
-A: 修改 `.git/config` 文件中的 `[branch "master"]` 部分：
-```ini
-[branch "master"]
-    remote = origin  # 或 gitee
-    merge = refs/heads/master
-```
-
-### Q: 如何删除远程仓库？
-A: 使用以下命令：
-```bash
-git remote remove origin
-git remote remove gitee
-```
-
-## 自动化建议
-
-1. **Git Hooks**: 可以设置 pre-push hook 自动推送到两个平台
-2. **CI/CD**: 在 GitHub Actions 或 Gitee Go 中配置自动同步
-3. **定时同步**: 使用 cron 任务定期同步两个仓库
-
-## 相关链接
-
-- [GitHub 仓库](https://github.com/FnTop/VuePreview)
-- [Gitee 仓库](https://gitee.com/FnTop/vue-preview) 
